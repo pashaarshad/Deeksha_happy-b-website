@@ -1,0 +1,404 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+/* Black screen overlay */
+.black-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 1s ease-out;
+}
+
+.black-screen.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Action buttons */
+.action-btn {
+    position: relative;
+    padding: 20px 40px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
+    background-size: 400% 400%;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    animation: gradientShift 3s ease infinite;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.action-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.action-btn.lights-btn {
+    margin-bottom: 50px;
+}
+
+.btn-text {
+    position: relative;
+    z-index: 2;
+}
+
+.btn-glow {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 50px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #ffeaa7);
+    background-size: 400% 400%;
+    animation: gradientShift 3s ease infinite;
+    filter: blur(10px);
+    opacity: 0.7;
+    z-index: -1;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Main content */
+.main-content {
+    opacity: 0;
+    transition: opacity 1s ease-in;
+    min-height: 100vh;
+    position: relative;
+}
+
+.main-content.visible {
+    opacity: 1;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.lights-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.light {
+    width: 40px;
+    height: 60px;
+    border-radius: 20px 20px 50% 50%;
+    display: inline-block;
+    position: relative;
+    animation: lightTwinkle 2s ease-in-out infinite alternate;
+    margin: 5px;
+}
+
+.light.red { background: #ff4757; box-shadow: 0 0 20px #ff4757; }
+.light.green { background: #2ed573; box-shadow: 0 0 20px #2ed573; }
+.light.blue { background: #3742fa; box-shadow: 0 0 20px #3742fa; }
+.light.yellow { background: #ffa502; box-shadow: 0 0 20px #ffa502; }
+.light.purple { background: #a55eea; box-shadow: 0 0 20px #a55eea; }
+.light.pink { background: #ff3838; box-shadow: 0 0 20px #ff3838; }
+
+.light::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 20px;
+    background: #333;
+}
+
+@keyframes lightTwinkle {
+    0% { opacity: 0.6; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.1); }
+}
+
+.birthday-title {
+    font-size: clamp(2rem, 5vw, 4rem);
+    color: #fff;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    margin: 20px 0;
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    0% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+    100% { text-shadow: 0 0 40px rgba(255, 255, 255, 1), 0 0 60px rgba(255, 255, 255, 0.8); }
+}
+
+/* Action buttons container */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Balloons */
+.balloons-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.balloon {
+    position: absolute;
+    font-size: 3rem;
+    animation: floatUp 4s ease-out forwards;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-20vh) rotate(360deg);
+        opacity: 1;
+    }
+}
+
+/* Cake */
+.cake-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 40px 0;
+    animation: cakeEntrance 1s ease-out;
+}
+
+@keyframes cakeEntrance {
+    0% {
+        transform: scale(0) rotate(180deg);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+    }
+}
+
+.cake {
+    font-size: 8rem;
+    animation: cakeBounce 2s ease-in-out infinite;
+    margin-bottom: 20px;
+}
+
+@keyframes cakeBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+.candles {
+    display: flex;
+    gap: 10px;
+}
+
+.candle {
+    font-size: 2rem;
+    animation: candleFlicker 1s ease-in-out infinite alternate;
+}
+
+@keyframes candleFlicker {
+    0% { opacity: 0.8; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.1); }
+}
+
+/* Images */
+.images-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 40px 20px;
+    flex-wrap: wrap;
+    animation: imagesReveal 2s ease-out;
+}
+
+@keyframes imagesReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.image-frame {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    padding: 10px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transform: rotate(-2deg);
+    transition: transform 0.3s ease;
+}
+
+.image-frame:nth-child(even) {
+    transform: rotate(2deg);
+}
+
+.image-frame:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+.birthday-image {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+}
+
+/* Confetti */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 15;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #ff6b6b;
+    animation: confettiFall 3s linear infinite;
+}
+
+.confetti:nth-child(2n) { background: #4ecdc4; }
+.confetti:nth-child(3n) { background: #45b7d1; }
+.confetti:nth-child(4n) { background: #96ceb4; }
+.confetti:nth-child(5n) { background: #ffeaa7; }
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .action-btn {
+        padding: 15px 30px;
+        font-size: 16px;
+        margin: 10px;
+    }
+    
+    .lights-container {
+        justify-content: center;
+    }
+    
+    .light {
+        width: 30px;
+        height: 45px;
+        margin: 3px;
+    }
+    
+    .birthday-title {
+        font-size: 2.5rem;
+        margin: 15px 0;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .cake {
+        font-size: 6rem;
+    }
+    
+    .birthday-image {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .images-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .action-btn {
+        padding: 12px 25px;
+        font-size: 14px;
+    }
+    
+    .birthday-title {
+        font-size: 2rem;
+    }
+    
+    .cake {
+        font-size: 5rem;
+    }
+    
+    .birthday-image {
+        width: 150px;
+        height: 150px;
+    }
+    
+    .light {
+        width: 25px;
+        height: 35px;
+    }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Deeksha Raj! 🎉</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Black screen overlay -->
+    <div id="blackScreen" class="black-screen active">
+        <button id="lightsBtn" class="action-btn lights-btn">
+            <span class="btn-text">Lights!</span>
+            <div class="btn-glow"></div>
+        </button>
+    </div>
+
+    <!-- Main content -->
+    <div id="mainContent" class="main-content">
+        <!-- Header with lights -->
+        <header class="header">
+            <div class="lights-container">
+                <!-- SVG lights will be generated here -->
+            </div>
+            <h1 class="birthday-title">Happy Birthday Deeksha Raj! 🎂</h1>
+        </header>
+
+        <!-- Action buttons container -->
+        <div id="actionButtons" class="action-buttons">
+            <button id="decorateBtn" class="action-btn hidden">
+                <span class="btn-text">Decorate!</span>
+                <div class="btn-glow"></div>
+            </button>
+            <button id="cakeBtn" class="action-btn hidden">
+                <span class="btn-text">Bring the Cake!</span>
+                <div class="btn-glow"></div>
+            </button>
+        </div>
+
+        <!-- Balloons container -->
+        <div id="balloonsContainer" class="balloons-container"></div>
+
+        <!-- Cake container -->
+        <div id="cakeContainer" class="cake-container hidden">
+            <div class="cake">🎂</div>
+            <div class="candles">
+                <span class="candle">🕯️</span>
+                <span class="candle">🕯️</span>
+                <span class="candle">🕯️</span>
+            </div>
+        </div>
+
+        <!-- Images container -->
+        <div id="imagesContainer" class="images-container hidden">
+            <div class="image-frame">
+                <img src="image1.jpg" alt="Memory 1" class="birthday-image" onerror="this.style.display='none'">
+            </div>
+            <div class="image-frame">
+                <img src="image2.jpg" alt="Memory 2" class="birthday-image" onerror="this.style.display='none'">
+            </div>
+        </div>
+
+        <!-- Confetti container -->
+        <div id="confettiContainer" class="confetti-container"></div>
+    </div>
+
+    <!-- Audio element -->
+    <audio id="birthdayMusic" loop>
+        <source src="happy.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
