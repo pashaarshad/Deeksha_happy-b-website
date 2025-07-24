@@ -24,17 +24,24 @@ document.addEventListener('DOMContentLoaded', function() {
     birthdayMusic.load();
 });
 
-// Create SVG lights
+// Create PNG bulb lights
 function createLights() {
     const lightsContainer = document.querySelector('.lights-container');
-    const colors = ['red', 'green', 'blue', 'yellow', 'purple', 'pink'];
+    const bulbImages = ['bulb_red.png', 'bulb_green.png', 'bulb_blue.png', 'bulb_yellow.png', 'bulb_pink.png', 'bulb_orange.png'];
     
     // Create 12 lights for better visual effect
     for (let i = 0; i < 12; i++) {
-        const light = document.createElement('div');
-        light.className = `light ${colors[i % colors.length]}`;
-        light.style.animationDelay = `${i * 0.2}s`;
-        lightsContainer.appendChild(light);
+        const lightContainer = document.createElement('div');
+        lightContainer.className = 'light-container';
+        lightContainer.style.animationDelay = `${i * 0.2}s`;
+        
+        const lightImg = document.createElement('img');
+        lightImg.src = bulbImages[i % bulbImages.length];
+        lightImg.className = 'light-bulb';
+        lightImg.alt = `Bulb ${i + 1}`;
+        
+        lightContainer.appendChild(lightImg);
+        lightsContainer.appendChild(lightContainer);
     }
 }
 

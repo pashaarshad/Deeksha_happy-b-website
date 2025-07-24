@@ -116,24 +116,21 @@ body {
     gap: 10px;
 }
 
-.light {
-    width: 40px;
-    height: 60px;
-    border-radius: 20px 20px 50% 50%;
+.light-container {
     display: inline-block;
     position: relative;
     animation: lightTwinkle 2s ease-in-out infinite alternate;
     margin: 5px;
 }
 
-.light.red { background: #ff4757; box-shadow: 0 0 20px #ff4757; }
-.light.green { background: #2ed573; box-shadow: 0 0 20px #2ed573; }
-.light.blue { background: #3742fa; box-shadow: 0 0 20px #3742fa; }
-.light.yellow { background: #ffa502; box-shadow: 0 0 20px #ffa502; }
-.light.purple { background: #a55eea; box-shadow: 0 0 20px #a55eea; }
-.light.pink { background: #ff3838; box-shadow: 0 0 20px #ff3838; }
+.light-bulb {
+    width: 40px;
+    height: 60px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
 
-.light::before {
+.light-container::before {
     content: '';
     position: absolute;
     top: -10px;
@@ -346,9 +343,12 @@ body {
         justify-content: center;
     }
     
-    .light {
+    .light-bulb {
         width: 30px;
         height: 45px;
+    }
+    
+    .light-container {
         margin: 3px;
     }
     
@@ -397,7 +397,7 @@ body {
         height: 150px;
     }
     
-    .light {
+    .light-bulb {
         width: 25px;
         height: 35px;
     }
