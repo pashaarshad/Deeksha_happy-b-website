@@ -185,8 +185,14 @@ body {
 
 .balloon {
     position: absolute;
-    font-size: 3rem;
     animation: floatUp 4s ease-out forwards;
+}
+
+.balloon-image {
+    width: 60px;
+    height: 80px;
+    object-fit: contain;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
 }
 
 @keyframes floatUp {
@@ -224,10 +230,13 @@ body {
     }
 }
 
-.cake {
-    font-size: 8rem;
+.cake-image {
+    width: 128px;
+    height: 128px;
+    object-fit: contain;
     animation: cakeBounce 2s ease-in-out infinite;
     margin-bottom: 20px;
+    filter: drop-shadow(4px 4px 8px rgba(0, 0, 0, 0.3));
 }
 
 @keyframes cakeBounce {
@@ -363,8 +372,9 @@ body {
         gap: 20px;
     }
     
-    .cake {
-        font-size: 6rem;
+    .cake-image {
+        width: 96px;
+        height: 96px;
     }
     
     .birthday-image {
@@ -388,8 +398,9 @@ body {
         font-size: 2rem;
     }
     
-    .cake {
-        font-size: 5rem;
+    .cake-image {
+        width: 80px;
+        height: 80px;
     }
     
     .birthday-image {

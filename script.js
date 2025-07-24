@@ -119,28 +119,42 @@ function handleCakeClick() {
 
 // Launch balloons animation
 function launchBalloons() {
+    const balloonImages = ['b1.png', 'b2.png', 'b3.png', 'b4.png', 'b5.png', 'b6.png', 'b7.png'];
     const balloonEmojis = ['🎈', '🎉', '🎊', '🎀', '🎁', '🌟', '⭐', '💫'];
     const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7', '#a55eea'];
     
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 20; i++) {
         setTimeout(() => {
-            const balloon = document.createElement('div');
-            balloon.className = 'balloon';
-            balloon.textContent = balloonEmojis[Math.floor(Math.random() * balloonEmojis.length)];
-            balloon.style.left = Math.random() * 90 + '%';
-            balloon.style.color = colors[Math.floor(Math.random() * colors.length)];
-            balloon.style.animationDelay = `${Math.random() * 0.5}s`;
-            balloon.style.animationDuration = `${3 + Math.random() * 2}s`;
+            const balloonContainer = document.createElement('div');
+            balloonContainer.className = 'balloon';
+            balloonContainer.style.left = Math.random() * 90 + '%';
+            balloonContainer.style.animationDelay = `${Math.random() * 0.5}s`;
+            balloonContainer.style.animationDuration = `${3 + Math.random() * 2}s`;
             
-            balloonsContainer.appendChild(balloon);
+            // Randomly choose between PNG image balloon or emoji balloon
+            if (Math.random() > 0.5) {
+                // Create PNG balloon
+                const balloonImg = document.createElement('img');
+                balloonImg.src = balloonImages[Math.floor(Math.random() * balloonImages.length)];
+                balloonImg.className = 'balloon-image';
+                balloonImg.alt = 'Balloon';
+                balloonContainer.appendChild(balloonImg);
+            } else {
+                // Create emoji balloon
+                balloonContainer.textContent = balloonEmojis[Math.floor(Math.random() * balloonEmojis.length)];
+                balloonContainer.style.color = colors[Math.floor(Math.random() * colors.length)];
+                balloonContainer.style.fontSize = '3rem';
+            }
+            
+            balloonsContainer.appendChild(balloonContainer);
             
             // Remove balloon after animation
             setTimeout(() => {
-                if (balloon.parentNode) {
-                    balloon.parentNode.removeChild(balloon);
+                if (balloonContainer.parentNode) {
+                    balloonContainer.parentNode.removeChild(balloonContainer);
                 }
             }, 5000);
-        }, i * 200);
+        }, i * 150);
     }
 }
 
